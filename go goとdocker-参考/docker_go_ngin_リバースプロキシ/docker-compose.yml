@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  sha256:
+    tty: true
+    build: "./sha256-3000"
+    image: hsuzuki0401/latte:sha256
+  
+  sha512:
+    tty: true
+    build: "./sha512-8000"
+    image: hsuzuki0401/latte:sha512
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - "sha256"
+      - "sha512"
+    image: hsuzuki0401/latte:ngin

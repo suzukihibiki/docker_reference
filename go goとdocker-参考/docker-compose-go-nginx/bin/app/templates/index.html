@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>ハッシュ化ツール</title>
+<style>
+@media (min-width: 600px) {
+    #parent {
+    display: flex;
+    }
+    #child1 {
+    flex-grow: 1;
+    text-align: center;
+    }
+    #child2 {
+    flex-grow: 1;
+    text-align: center;
+    }
+}
+</style>
+</head>
+<body>
+
+<div id="parent">
+<div id="child1">
+    <div class="center">データ</div>
+    <p>
+    <form method="POST" action="./main.go">
+        <textarea name=for_gin_num rows="30" cols="80" wrap=”hard”>{{.value}}</textarea>
+        <!-- <p><input type="text" name="for_gin_num"></p> -->
+    </p>
+    <p>
+        <button class="submit" data-action="/hash/hashvalue">ハッシュ化</button>
+    </p>
+    </form>
+</div>
+<div id="child2">
+  <div class="center">ハッシュ値</div>
+    <p>
+        <textarea name=for_gin_num rows="30" cols="80" wrap=”hard”>{{range .data}}
+{{.}}{{end}}</textarea>
+    </p>
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $('.submit').click(function() {
+    $(this).parents('form').attr('action', $(this).data('action'));
+    $(this).parents('form').submit();
+    });
+</script>
+</body>
+</html>

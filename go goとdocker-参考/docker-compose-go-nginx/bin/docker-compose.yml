@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  golang:
+    tty: true
+    build: "./app"
+    image: hsuzuki0401/latte-sha256:go
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - "golang"
+      # - "ggolang"
+    image: hsuzuki0401/latte-sha256:ngin
